@@ -1,0 +1,37 @@
+<ion-content>
+  <div id="content">
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="" navPush="RecrutePage" title="Go to Recrutement page" class="tip-bottom"><i class="icon-briefcase"></i> Recrutement</a></div>
+    </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Modifier une etape de recrutement</h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <div *ngFor="let checkcan of cbChecked">
+                  candidat:  {{checkcan.candidat.nom_candidat}} {{checkcan.candidat.prenom_candidat}}
+              </div>
+              <form role="form" (ngSubmit)="updateSelection()">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">Etats:</label>
+                    <select class="form-control" name="myetat" [(ngModel)]="etat">
+                      <option *ngFor="let etatt of etats" [value]="etatt.id">{{etatt.libelle_etat}}</option>
+                    </select>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" navPush="RecrutePage">Fermer</button>
+              <button type="submit" class="btn btn-primary">Editer</button>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content> 

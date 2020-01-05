@@ -1,0 +1,40 @@
+page-candidat-details {
+    .btn-social {
+        color: white;
+        opacity: 0.8;
+    }
+    .btn-social:hover {
+        color: white;
+        opacity: 1;
+        text-decoration: none;
+    }
+
+    .btn-facebook {
+        background-color: #3b5998;
+    }
+
+    .btn-twitter {
+        background-color: #00aced;
+    }
+
+    .btn-linkedin {
+        background-color: #0e76a8;
+    }
+
+    .btn-google {
+        background-color: #c32f10;
+    }
+}
+// on personnalise le label comme on veut
+.label-file {
+    cursor: pointer;
+    color: #00b1ca;
+    font-weight: bold;
+}
+.label-file:hover {
+    color: #25a5c4;
+}
+// et on masque le input
+.input-file {
+    display: none;
+}

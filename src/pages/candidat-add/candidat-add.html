@@ -1,0 +1,278 @@
+<!--Header-part-->
+<div id="header">
+  <h1><a href="#" navPush="HomePage">Recrute Sourcing</a></h1>
+</div>
+<!--close-Header-part--> 
+<!--top-Header-messaages-->
+<div class="btn-group rightzero"><a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a><a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+  <!--close-top-Header-messaages--> 
+  <div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+      <li class=""><a title=""  (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+        <span class="text">Déconnexion</span></a></li>
+    </ul>
+  </div>
+  <!--close-top-Header-menu-->
+  <div id="sidebar">
+    <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+      <ul>
+        <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+        <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+        <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+        <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i><span>Recherche</span></a></li>
+        <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>
+        <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i><span>Rapports </span></a></li>
+      </ul>
+  </div>
+  <div id="content">
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="" navPush="CandidatAddPage" title="Go to Home" class="tip-bottom"><i class="icon-user"></i> Ajouter un Candidat</a></div>
+    </div>
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title">
+              <span class="icon"><i class="icon-pencil"></i></span>
+              <h5>Ajouter un Candidat </h5>
+            </div>
+            <div class="widget-content nopadding">
+              <form id="form-wizard" class="form-horizontal" (ngSubmit)="saveCandidat()">
+                <div id="form-wizard-1" class="span6">
+                  <div class="control-group">
+                    <label class="control-label">Prénom : </label>
+                    <div class="controls">
+                      <input type="text"  name="prenom" [(ngModel)]="candidat.prenom_candidat" style="width: 96%"/>
+                    </div>
+                    <label class="control-label">Nom : </label>
+                    <div class="controls">
+                      <input type="text"  name="nom" [(ngModel)]="candidat.nom_candidat" style="width: 96%"/>
+                    </div>
+                    <label class="control-label">Genre : </label>
+                    <div class="controls">
+                      <select  name="genre" [(ngModel)]="candidat.genre_candidat" style="width: 100%">
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Email : </label>
+                      <div class="controls">
+                        <input type="email"  name="email"  [(ngModel)]="candidat.email_candidat"  style="width: 96%"/>
+                      </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Téléphone : </label>
+                    <div class="controls">
+                      <input type="tel"  name="telephone" [(ngModel)]="candidat.telephone_candidat" style="width: 96%"/>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label">Ville : </label>
+                      <div class="controls">
+                        <select name="ville" [(ngModel)]="candidat.ville" style="width: calc(100% - 35px)" >
+                          <option selected></option>
+                          <option value="{{ville.id}}" *ngFor="let ville of villes">
+                              {{ville.libelle_ville}} </option>
+                        </select>
+                        <button class="add-element-new" data-toggle="modal" data-target="#modal_ville" data-whatever="@mdo">
+                          <i class="icon icon-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div id="form-wizard-2" class="span6">
+                    <div class="control-group">
+                      <label class="control-label">Niveau d'étude : </label>
+                        <div class="controls">
+                          <select name="netude"  [(ngModel)]="candidat.niveau_etude"style="width: calc(100% - 35px)" >
+                            <option selected></option>
+                            <option value="{{niveauEtude.id_niveauetude}}" *ngFor="let niveauEtude of niveauEtude">
+                                      {{niveauEtude.libelle__niveau_etude}} </option>
+                          </select>
+                          <button class="add-element-new" data-toggle="modal" data-target="#modal_etude" data-whatever="@mdo">
+                            <i class="icon icon-plus"></i>
+                          </button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Specialité : </label>
+                      <div class="controls">
+                          <select name="specialite"  [(ngModel)]="candidat.specialite" style="width: calc(100% - 35px)" >
+                            <option selected></option>
+                            <option value="{{specialite.id}}" *ngFor="let specialite of specialites">
+                                {{specialite.libelle_specialite}}</option>
+                          </select>
+                          <button class="add-element-new" data-toggle="modal" data-target="#modal_specialite" data-whatever="@mdo">
+                            <i class="icon icon-plus"></i>
+                          </button>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Experience : </label>
+                      <div class="controls">
+                        <select name="experience"  [(ngModel)]="candidat.experience" style="width: calc(100% - 35px)">
+                          <option selected></option>
+                          <option value="{{experience.id_experience}}" *ngFor="let experience of experiences">
+                             {{experience.libelle_experience}} </option>
+                        </select>
+                        <button class="add-element-new" data-toggle="modal" data-target="#modal_experience" data-whatever="@mdo">
+                          <i class="icon icon-plus"></i>
+                        </button>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Titre : </label>
+                      <div class="controls">
+                        <select name="titre" [(ngModel)]="candidat.titre" style="width: calc(100% - 35px)">
+                          <option selected></option>
+                          <option value="{{titre.id}}" *ngFor="let titre of titres">
+                              {{titre.libelle_titre}} </option>
+                        </select>
+                        <button class="add-element-new" data-toggle="modal" data-target="#modal_titre" data-whatever="@mdo">
+                          <i class="icon icon-plus"></i>
+                          </button>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">Déscription : </label>
+                      <div class="controls">
+                        <textarea  rows="2" name="desc" [(ngModel)]="candidat.desc_candidat"  style="width: 98%"></textarea>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label">CV : </label>
+                        <div class="controls">
+                          <input type="file"  id="cv_can" name="cv_can"  [(ngModel)]="candidat.cv_candidat" style="width: 98%"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label">Photo : </label>
+                        <div class="controls">
+                          <input type="file" id="photo_can"  name="photo_can"  [(ngModel)]=" candidat.photo_candidat" style="width: 98%"/>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="form-actions">
+                    <input id="Retour" class="btn btn-primary" type="reset" value="Retour" />
+                    <input id="Suivant" class="btn btn-primary" type="submit" value="Suivant" />
+                    <div id="status"></div>
+                  </div>
+                  <div id="submitted"> </div>
+                </form>                                     
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal_ville" tabindex="-1" role="dialog" aria-labelledby="modal_ville" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center">Ajouter une nouvelle ville</h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Libelle ville:</label>
+                  <input type="text" class="form-control" id="libelle_ville" name="libelle_ville" [(ngModel)]="ville.libelle_ville" placeholder="Libelle Ville">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="reload_page()">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="saveVille()">Enregistrer</button>         
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal_experience" tabindex="-1" role="dialog" aria-labelledby="modal_experience" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center">Ajouter une nouvelle Experience</h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Libelle expérience:</label>
+                  <input type="text" class="form-control" id="libelle_experience" name="libelle_experience" [(ngModel)]="experience.libelle_experience" placeholder="Libelle Experience">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="reload_page()">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="saveExperience()">Enregistrer</button>         
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal_etude" tabindex="-1" role="dialog" aria-labelledby="modal_etude" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center">Ajouter un niveau d'étude</h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Libelle niveau d'étude:</label>
+                  <input type="text" class="form-control" id="libelle_NiveauEtude" name="libelle_NiveauEtude" [(ngModel)]="niveauetude.libelle_NiveauEtude" placeholder="Libelle Etude">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="reload_page()">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="saveNiveauEtude()">Enregistrer</button>         
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal_titre" tabindex="-1" role="dialog" aria-labelledby="modal_titre" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center">Ajouter un nouveau titre</h5>
+                  </div>
+                  <div class="modal-body" style="text-align: center">
+                    <form>
+                      <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">Libelle titre:</label>
+                        <input type="text" class="form-control" id="libelle_titre" name="libelle_titre" [(ngModel)]="titre.libelle_titre" placeholder="Libelle Titre">
+                      </div>
+                    </form>
+                  </div>
+                  <div class="modal-footer">
+                      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="reload_page()">Fermer</button>
+                      <button type="button" class="btn btn-primary" (click)="saveTitre()">Enregistrer</button>         
+                  </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal fade" id="modal_specialite" tabindex="-1" role="dialog" aria-labelledby="modal_specialite" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" style="text-align: center">Ajouter une nouvelle Specialité</h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label"> Libelle specialité:</label>
+                  <input type="text" class="form-control" id="libelle_specialite" name="libelle_specialite" [(ngModel)]="specialite.libelle_specialite" placeholder="Libelle Specialité">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="reload_page()">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="saveSpecialite()">Enregistrer</button>         
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row-fluid">
+        <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+      </div>
+  </div>

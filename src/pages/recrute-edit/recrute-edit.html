@@ -1,0 +1,64 @@
+<ion-content>
+<!--Header-part-->
+<div id="header">
+  <h1><a href="#" navPush="HomePage"></a></h1>
+  </div>
+<!--close-Header-part--> 
+<!--top-Header-messaages-->
+<div class="btn-group rightzero"><a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+<!--close-top-Header-messaages--> 
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+    <li class=""><a title="" href="" (click)="deconnexion()"><i class="icon icon-share-alt"></i><span class="text">Déconnexion</span></a></li>
+  </ul>
+</div>
+<!--close-top-Header-menu-->
+<div id="sidebar">
+  <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+    <ul>
+      <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i> <span>Accueil</span></a></li>
+      <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i> <span>Candidats </span></a></li>
+      <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i> <span>Recrutement</span></a></li>  
+      <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i> <span>Documents</span></a></li>
+      <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i> <span>Recherche</span></a></li>
+      <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i> <span>Rapports </span></a></li>
+    </ul>
+    </div>
+    <div id="content">
+      <div id="content-header">
+        <div id="breadcrumb"><a href="" navPush="RecruteEditPage" title="page de modification de l'etat de recrutement" class="tip-bottom"><i class="icon-briefcase"></i> Ajouter un Recrutement</a></div>
+      </div>
+  <!-- Page Content -->
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel" style="text-align: center">Modifier une étape du processus </h5>
+            </div>
+            <div class="modal-body" style="text-align: center">
+              <form>
+                <div class="form-group">
+                  <label for="recipient-name" class="col-form-label">Ordre:</label>
+                    <input type="text" class="form-control" id="recipient-name" name="ordre_etat" [(ngModel)]="etat.ordre_etat" >
+                </div>
+                <div class="form-group">
+                  <label for="message-text" class="col-form-label">Etape:</label>
+                  <input type="text" class="form-control" id="recipient-name" name="libelle_etat" [(ngModel)]="etat.libelle_etat">
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal" navPush="RecrutePage">Fermer</button>
+              <button type="button" class="btn btn-primary" (click)="updateEtat()" data-dismiss="modal">Editer</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+ </div>
+ </div>
+</ion-content> 

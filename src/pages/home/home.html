@@ -1,0 +1,111 @@
+<ion-content>
+<!--Header-part-->
+    <div id="header">
+        <h1><a href="#" navPush="HomePage"></a></h1>
+    </div>
+    <!--close-Header-part--> 
+    <!--top-Header-messaages-->
+    <div class="btn-group rightzero"> <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+    <!--close-top-Header-messaages--> 
+    <!--top-Header-menu-->
+    <div id="user-nav" class="navbar navbar-inverse">
+            <ul class="nav">
+                <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+                <li class=""><a title="" href="" (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+                 <span class="text">Déconnexion</span></a></li>
+            </ul>
+    </div>
+    <!--close-top-Header-menu-->
+      <div id="sidebar">
+        <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+        <ul>
+          <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+          <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+          <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>  
+          <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+          <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i><span>Recherche</span></a></li>
+          <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i><span>Rapports </span></a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <div id="content-header">
+          <div id="breadcrumb"><a href="" navPush="HomePage" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a></div>
+        </div>
+    <!-- Page Content -->
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span12">    
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="thumbnail" style="margin-top: 5px">
+                            <h2><a href="" navPush="HomePage">Recrute Sourcing </a></h2>
+                            <h4> Accélérez vos recrutements en seulement quelques clics </h4>
+                            <div class="caption">
+                                <p>Recrute Sourcing est une application de recrutements et de gestion de candidatures dédié aux entreprises désireuses d'améliorer leurs performances de recrutement. 
+                                C'est une application innovante qui permet de réduire le cycle d’un processus de recrutement et d'éviter les tâches 
+                                répétitives pour une bonne gestion du temps. Notre application <strong>Recrute Sourcing </strong>, s’appuyant sur des fonctionnalités innovantes de haute performance qui permet notamment d'ajouter des candidats et d’intégrer rapidement leurs CV, leurs photos, d’archiver automatiquement les emails et les documents ,d’effectuer des recherches dynamiques efficaces sur des profits pertinents sans oublier de visualiser le reporting annuel en clin oeil.</p>
+                            </div>
+                            <div class="ratings">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <div class="row-fluid"></div><BR>
+                <div class="row-fluid">
+                    <div class="span3">
+                        <div class="thumbnail" navPush="RecherchePage">
+                            <img src="assets/images/gallery/src111.png" alt="">
+                            <div class="caption">
+                                <h4><a href="#">Consultez votre propre vive de candidats à partir des réseaux sociaux </a></h4>
+                                <p> Si vous pouviez classer et catégoriser vos candidats selonvos propres critères? 
+                                    Avec Recrute Sourcing  chaque recruteur personnalise ces catégories, crée ses propres paniers de candidats et utilise ses propres filtres à savoir:Classement et recherche par critères en se basant sur l'api google costum search pour affiner le classement et personnaliser l'apparence des résultats de recherche.     
+                                </p>
+                            </div>
+                            <div class="ratings"></div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="thumbnail" navPush="RapportPage">
+                            <img src="assets/images/gallery/src11.png" alt="">
+                            <div class="caption">
+                                <h4><a href="#">Analyses poussées pour des décisions éclairées</a></h4>
+                                <p>  Notre application Recrute Sourcing  vous permet de réaliser des analyses innovantes et probantes des indicateurs de processus, de la qualité et des spécialités.
+                                    <br> Grâce à notre application, nous mettons à votre disposition le module rapport qui regroupe les évaluations centrales qui facilitent votre quotidien au travail et vous permet de bénéficier d'informations pertinentes qui vous aident dans vos décisionset suivre votre activité annuelle.
+                                </p>
+                            </div>
+                            <div class="ratings"></div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="thumbnail" navPush="DocumentPage">
+                            <img src="assets/images/gallery/src112.png" alt="">
+                            <div class="caption">
+                                <h4><a href="#">Accablé par documents? Réduire le temps de recherche de plusieurs heures à quelques secondes.</a></h4>
+                                <p>  Recrute Sourcing  est une application intuitive et hautement performante de gestion de documents qui offre les avantages
+                                        d'un système de gestion de documents aux moyennes et grandes entreprises. 
+                                       Ce module aide les organisations dans le monde à prendre le contrôle de leurs documents, en mettant l'accent sur l'accès rapide aux fichiers.
+                                </p>
+                            </div>
+                            <div class="ratings"></div>
+                        </div>
+                    </div>
+                    <div class="span3">
+                        <div class="thumbnail" navPush="CandidatsPage">
+                            <img src="assets/images/gallery/src123.png" alt="">
+                            <div class="caption">
+                                <h4><a href="#"> Valorisez votre marque employeur </a></h4>
+                                <p> Les processus de recrutement sont importants, mais une excellente gestion des candidats est un moteur décisif pour la réussite de l'entreprise. Recrute Sourcing  vous permet  de réagir rapidement de l'envoi de l'email  jusqu'à l'occupation du poste. vous pouvez vous fier à la gestion des candidats, sans paperasse et de réagir rapidement avec les meilleurs d'entre eux. Invitez-les à passer un entretien en quelques minutes seulement. </p>
+                            </div>
+                            <div class="ratings"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+</div>
+    <div class="row-fluid">
+        <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+    </div>
+</ion-content>  

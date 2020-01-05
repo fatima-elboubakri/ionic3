@@ -1,0 +1,84 @@
+body {
+	background:#49CCED;
+}
+
+#header {
+	background-color: #2e363f;
+   margin-top:10px;
+}
+
+#search input[type=text] {
+	background-color: #fff; border-left: 1px solid #e3ebed;
+}
+#search input[type=text]:focus {
+	color: #777777;
+}
+.dropdown-menu li a:hover, .dropdown-menu .active a, .dropdown-menu .active a:hover {
+    color: #eeeeee;
+	background:#F77825;
+   
+}
+.top_message{ float:right; padding:20px 12px; position:relative; top:-13px; border-left:1px solid #3D3A37; font-size:14px; line-height:20px; *line-height:20px; color:#333; text-align:center;  vertical-align:middle; cursor:pointer; }
+.top_message:hover{ background:#000}
+.rightzero{ right:0px; display:none;}
+@media (max-width: 480px) {
+	#content{margin-top: 0;}
+
+	#sidebar > ul > li{ float:none;}
+	#sidebar > ul > li:hover ul{ display:block;}
+	#sidebar, #sidebar > ul {width: 43px;display: block;position: fixed;background:#49CCED;height:100%;z-index:1;}
+	#sidebar > ul ul {
+		display: none;
+		position: absolute;
+		left:50px;
+		top: 0;
+		min-width: 150px;
+		list-style: none;
+	}
+	#sidebar > ul ul li a {
+		white-space: nowrap;
+		padding: 10px 25px;
+	}
+	#sidebar > ul ul:before {
+		border-top: 7px solid transparent;
+		border-bottom: 7px solid transparent;
+		content: "";
+		display: inline-block;
+		left: -6px;
+		position: absolute;
+		top: 11px;
+	}
+	#sidebar > ul ul:after {
+		border-top: 6px solid transparent;
+		border-bottom: 6px solid transparent;
+		content: "";
+		display: inline-block;
+		left: -5px;
+		position: absolute;
+		top: 12px;
+    }
+	#sidebar > a {
+		display: none !important;
+	}
+	#sidebar > ul > li.open.submenu > a {
+    border-bottom: none !important;
+	}
+	#sidebar > ul > li > a > span {
+		display: none;
+	}
+	#content {
+		margin-left: 43px  !important;
+	}
+#user-nav{margin:0px auto;top: -63px;border-top:none;width: 45px;left: 0;text-align: right;float: right;}
+#user-nav > ul > li:last-child{ border-right:1px solid #363E48}
+#user-nav > ul > li{ border-top:1px solid #363E48}
+}
+@media (min-width: 481px) and (max-width: 767px) {
+	#sidebar > ul ul:before {
+		border-right: 7px solid rgba(0, 0, 0, 0.2);
+	}
+	#sidebar > ul ul:after {
+		border-right: 6px solid #222222;
+    }
+
+}

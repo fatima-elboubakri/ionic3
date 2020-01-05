@@ -1,0 +1,149 @@
+<ion-content>
+  <!--Header-part-->
+  <div id="header">
+      <h1><a href="#" navPush="HomePage"></a></h1>
+  </div>
+  <!--close-Header-part--> 
+  <!--top-Header-messaages-->
+  <div class="btn-group rightzero"> <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+  <!--close-top-Header-messaages--> 
+  <!--top-Header-menu-->
+  <div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+      <li class=""><a title="" href="" (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+          <span class="text">Déconnexion</span></a>
+      </li>
+    </ul>
+  </div>
+    <!--close-top-Header-menu-->
+    <div id="sidebar">
+      <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+      <ul>
+        <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+        <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+        <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>  
+        <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+        <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i><span>Recherche</span></a></li>
+        <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i><span>Rapports </span></a></li>
+       </ul>
+    </div>
+    <div id="content">
+      <div id="content-header">
+        <div id="breadcrumb"><a href="" navPush="RapportPage" title="page des rapports" class="tip-bottom"><i class="icon-signal"></i> Rapports</a></div>
+      </div>
+          <!-- Page Content -->
+    <script src="node_module/chart.js/src/chart.js"></script>
+    <div class="container-fluid">
+      <ion-content padding><div class="row-fluid">
+        <div class="span6" style="overflow-y: scroll">
+          <div class="widget-box" style="min-width: 600px;">
+              <div class="widget-title">
+                <span class="icon"><i class="icon-briefcase"></i></span>
+                <h5>Nombre de personnes convoquées pour chacune des étapes du processus de recrutement</h5>
+              </div>
+          <div *ngIf= "barChartLabels?.length" style="display: block;">
+          <canvas baseChart 
+                  [datasets]="barChartData"
+                  [labels]="barChartLabels"
+                  [options]="barChartOptions"
+                  [colors]="barChartColors1"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+            </canvas>
+          </div>
+        </div>
+    </div>
+      <div class="span6" style="overflow-y: scroll">
+        <div class="widget-box" style="min-width: 600px;">
+          <div class="widget-title">
+            <span class="icon"><i class="icon-ok"></i></span>
+              <h5>Nombre de personnes retenues </h5>             
+          </div>
+          <div *ngIf= "lineChartLabels?.length" style="display: block;">
+          <canvas baseChart 
+                  [datasets]="lineChartData"
+                  [labels]="lineChartLabels"
+                  [options]="lineChartOptions"
+                  [colors]="lineChartColors"
+                  [legend]="lineChartLegend"
+                  [chartType]="lineChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+          </canvas>
+          </div>
+          </div>
+      </div>
+   </div>
+   <div class="row-fluid">
+    <div class="span6" style="overflow-y: scroll">
+      <div class="widget-box" style="min-width: 600px;">
+        <div class="widget-title">
+          <span class="icon"><i class="icon-briefcase"></i></span>
+            <h5>Nombre de femmes convoquées pour chacune des étapes du processus de recrutement</h5>                </div>
+              <div *ngIf= "barChartLabels2?.length" style="display: block;">
+                <canvas baseChart 
+                       [datasets]="barChartData2"
+                       [labels]="barChartLabels2"
+                       [options]="barChartOptions"
+                       [colors]="barChartColors1"
+                       [legend]="barChartLegend"
+                       [chartType]="barChartType"
+                       (chartHover)="chartHovered($event)"
+                       (chartClick)="chartClicked($event)">
+                </canvas>
+              </div>
+        </div>
+      </div>
+      <div class="span6" style="overflow-y: scroll">
+      <div class="widget-box" style="min-width: 600px;">
+        <div class="widget-title">
+          <span class="icon"><i class="icon-tasks"></i></span>
+            <h5>Nombre de personnes dans une spécialité donnée</h5>             
+        </div>
+        <div *ngIf= "barChartLabels3?.length" style="display: block;">
+              <canvas baseChart 
+                      [datasets]="barChartData3"
+                      [labels]="barChartLabels3"
+                      [options]="barChartOptions"
+                      [colors]="barChartColors1"
+                      [legend]="barChartLegend"
+                      [chartType]="barChartType"
+                      (chartHover)="chartHovered($event)"
+                      (chartClick)="chartClicked($event)">
+              </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span6" style="overflow-y: scroll">
+      <div class="widget-box" style="min-width: 600px;">
+        <div class="widget-title">
+          <span class="icon"><i class="icon-tasks"></i></span>
+            <h5>Nombre de femme dans une spécialité donnée</h5>           
+        </div>
+        <div *ngIf= "barChartLabels4?.length" style="display: block;">
+          <canvas baseChart 
+                  [datasets]="barChartData4"
+                  [labels]="barChartLabels4"
+                  [options]="barChartOptions"
+                  [colors]="barChartColors1"
+                  [legend]="barChartLegend"
+                  [chartType]="barChartType"
+                  (chartHover)="chartHovered($event)"
+                  (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </ion-content>
+  </div>
+</div>
+  <div class="row-fluid">
+    <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+  </div>
+</ion-content>  

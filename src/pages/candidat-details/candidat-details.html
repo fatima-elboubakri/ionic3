@@ -1,0 +1,180 @@
+<ion-content>
+<!--Header-part-->
+<div id="header">
+  <h1><a href="#" navPush="HomePage">Recrute Sourcing</a></h1>
+</div>
+<!--close-Header-part--> 
+<!--top-Header-messaages-->
+<div class="btn-group rightzero"> <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+<!--close-top-Header-messaages--> 
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+    <li class=""><a title=""  (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+        <span class="text">Déconnexion</span></a>
+    </li>
+  </ul>
+</div>
+<!--close-top-Header-menu-->
+<div id="sidebar">
+  <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+    <ul>
+      <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+      <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+      <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+      <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i><span>Recherche</span></a></li>
+      <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>
+      <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i><span>Rapports </span></a></li>
+    </ul>
+</div>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="" navPush="CandidatsPage" title="Go to CandidatsPage" class="tip-bottom"><i class="icon-user"></i>Candidat détails</a></div>
+  </div>
+  <div class="container-fluid">
+    <section style="padding-bottom: 50px; padding-top: 50px;">
+      <div class="row-fluid">
+        <div class="span4">
+          <img src="http://rs.creativetag.ma/web/assets/{{candidat.photo_candidat}}" class="img-rounded img-responsive" style="width:400px;height: 400px;"/>
+          <br />
+          <label for="file" class="label-file">Choisir une image</label>  
+          <input type="file" id="selectFile"  name="selectFile" class="input-file" />
+          <button (click)="updateImage()"><i class="icon icon-upload"></i></button>
+          <br />
+          <div class="alert alert-info">
+            <h2>{{candidat.nom_candidat}} {{candidat.prenom_candidat}}</h2>
+              <h4>{{candidat.titre.libelle_titre}}</h4>
+                <p>{{candidat.specialite.libelle_specialite}} </p>
+          </div>
+          <div >
+            <a  class="btn btn-social btn-facebook" *ngFor="let c of comp" >
+               &nbsp;  {{c}}</a>
+          </div>
+          <br /><br/>
+        </div>
+        <form id="form-wizard" class="form-horizontal" (ngSubmit)="editCandidat()">
+          <div class="span4">
+            <div id="form-wizard-1" class="step">
+              <div class="control-group">
+                <label class="control-label">Prénom : </label>
+                <div class="controls">
+                  <input type="text"  name="prenom" [(ngModel)]="candidat.prenom_candidat" style="width: 96%"/>
+                </div>
+                <label class="control-label">Nom : </label>
+                  <div class="controls">
+                    <input type="text"  name="nom" [(ngModel)]="candidat.nom_candidat" style="width: 96%"/>
+                  </div>
+                  <label class="control-label">Genre : </label>
+                  <div class="controls">
+                    <select  name="genre" [(ngModel)]="candidat.genre_candidat" style="width: 100%">
+                      <option value="Homme">Homme</option>
+                      <option value="Femme">Femme</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Email : </label>
+                    <div class="controls">
+                      <input type="email"  name="email"  [(ngModel)]="candidat.email_candidat"  style="width: 96%"   />
+                    </div>
+                </div>
+                <div class="control-group">
+                  <label class="control-label">Téléphone : </label>
+                    <div class="controls">
+                      <input type="tel"  name="telephone" [(ngModel)]="candidat.telephone_candidat" style="width: 96%"   />
+                    </div>
+                </div>
+                <div class="control-group">
+                            <label class="control-label">Ville : </label>
+                              <div class="controls">
+                                <select   name="ville"  [(ngModel)]="candidat.ville" style="width: 100%">
+                                  <option selected></option>
+                                  <option value="{{ville.id}}" *ngFor="let ville of villes">
+                                                  {{ville.libelle_ville}}
+                                  </option>
+                                </select>
+                               </div>
+                            </div>
+                          </div>
+                        </div>
+                <div class="span4">
+                        <div id="form-wizard-2" class="step">
+                            <div class="control-group">
+                                <label class="control-label">Niveau détude : </label>
+                                <div class="controls">
+                                  <select   name="netude"  [(ngModel)]="candidat.niveau_etude" style="width: 100%">
+                                    <option selected></option>
+                                    <option value="{{niveauEtude.id_niveauetude}}" *ngFor="let niveauEtude of niveauEtude">
+                                          {{niveauEtude.libelle__niveau_etude}}
+                                        </option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Specialité : </label>
+                                <div class="controls">
+                                  <select   name="specialite"  [(ngModel)]="candidat.specialite" style="width: 100%" >
+                                    <option selected></option>
+                                    <option value="{{specialite.id}}" *ngFor="let specialite of specialites">
+                                          {{specialite.libelle_specialite}}
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Experience : </label>
+                                <div class="controls">
+                                  <select   name="experience"  [(ngModel)]="candidat.experience" style="width: 100%" >
+                                    <option selected></option>
+                                    <option value="{{experience.id_experience}}" *ngFor="let experience of experiences">
+                                          {{experience.libelle_experience}}
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Titre : </label>
+                                <div class="controls">
+                                  <select   name="titre" [(ngModel)]="candidat.titre" style="width: 100%" >
+                                    <option selected></option>
+                                    <option value="{{titre.id}}"
+                                        *ngFor="let titre of titres">
+                                          {{titre.libelle_titre}}
+                                    </option>
+                                  </select>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label class="control-label">Déscription</label>
+                                  <div class="controls">
+                                    <textarea  rows="2" name="desc" [(ngModel)]="candidat.desc_candidat"    ></textarea>
+                                  </div>
+                            </div>
+                             <div class="form-actions">
+                                <input id="back" class="btn btn-primary" type="reset" value="Annuler" />
+                                <input id="next" class="btn btn-primary" type="submit" value="Valider" />
+                                <div id="status"></div>
+                             </div>
+                              <div id="submitted"></div>
+                                <a href="http://localhost/fm_api/web/bundles/{{candidat.cv_candidat}}">{{candidat.cv_candidat}}</a>
+                                  <label for="file" class="label-file">Choisir un fichier</label>  
+                                  <input type="file" id="cv"  name="cv" class="input-file" />
+                                  <a (click)="updateCV()"><i class="icon icon-upload"></i></a>
+                              </div>
+                    </div>
+                </form>
+            </div>
+            <div class="row-fluid">
+                    <div class="span4"></div>
+            </div>
+            <!-- ROW END -->
+        </section>
+        <!-- SECTION END -->
+    </div>
+    <!-- CONATINER END -->
+      <div class="row-fluid">
+      <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+    </div>
+  </div>
+</ion-content>  

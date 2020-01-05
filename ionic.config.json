@@ -1,0 +1,8 @@
+{
+  "name": "RecruteSoursing",
+  "integrations": {
+    "cordova": {}
+  },
+  "proxyUrl": "http://192.168.43.213:8000/",
+  "type": "ionic-angular"
+}

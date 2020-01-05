@@ -1,0 +1,205 @@
+<ion-content>
+<!--Header-part-->
+<div id="header">
+  <h1><a href="#" navPush="HomePage">Recrute Sourcing</a></h1>
+</div>
+<!--close-Header-part--> 
+<!--top-Header-messaages-->
+<div class="btn-group rightzero"> <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+<!--close-top-Header-messaages--> 
+<!--top-Header-menu-->
+<div id="user-nav" class="navbar navbar-inverse">
+  <ul class="nav">
+    <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+    <li class=""><a title="" href="" (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+      <span class="text">Déconnexion</span></a></li>
+  </ul>
+</div>
+<!--close-top-Header-menu-->
+<div id="sidebar">
+  <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+  <ul>
+    <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+    <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+    <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>  
+    <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+    <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i> <span>Recherche</span></a></li>
+    <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i> <span>Rapports </span></a></li>
+  </ul>
+</div>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="" navPush="CandidatPage" title="Go to Candidat" class="tip-bottom"><i class="icon-user"></i> Candidats</a></div>
+  </div>
+<!-- Page Content -->
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title" style="background-color:#49CCED ">
+            <h5>Filtrage</h5>
+          </div>
+          <div class="widget-content" >
+            <ul class="thumbnails"  style="margin-bottom: 0">
+              <li class="span4" style="margin-bottom: 0px">
+                <label>Trier</label>
+                <select  [(ngModel)]="tri"  name="tri" (change)="Tri()" 
+                          style="width: 100%">
+                    <option value="nomCandidat">Nom</option>
+                    <option value="prenomCandidat">Prenom</option>
+                    <option value="titre">Titre</option>
+                    <option value="experience">Expérience</option>
+                    <option value="niveauEtude">Niveau d'étude</option>
+                </select>
+                </li>                     
+                <li class="span4" style="margin-bottom: 0px">
+                  <label>Recherche par mot clé</label>
+                  <input type="text" placeholder="Titre , Nom..."  [(ngModel)]="search"  name="search" (input)="Search()" style="width:  95%">
+                </li>
+                <li class="span4" style="margin-bottom: 0px">
+                  <label>&nbsp;</label>
+                  <button (click)="hideshow()" style="color: #fff; background-color: #00b894;
+                          border: 1px solid #00b894;text-transform: uppercase;font-size: 14px;
+                          padding: 4px 5px 3px;margin-bottom: 0; width: 100%"> Affiner Votre Recherche
+                          <span class="icon" >
+                            <i class=" icon-arrow-down"></i>            
+                          </span>                 
+                  </button>
+                </li>
+                <div class="row-fluid" id="critere" style="display: none;">
+                  <div class="span12" style="text-align: left">
+                    <form  (ngSubmit)="searchCandidat()">
+                      <fieldset class="fssearch" style="padding: 20px;margin: 1cm;background-color: aliceblue;">
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label>Genre:</label>
+                        <select id="genrex" name="genrex" style="width: 100%">  
+                          <option value=""></option>          
+                          <option value="Homme">Homme</option>
+                          <option value="Femme">Femme</option>
+                        </select>
+                      </div>
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label>Titre:</label>
+                          <select  name="titrex" id="titrex" style="width: 100%" > 
+                            <option selected></option>
+                            <option value="{{titre.libelle_titre}}" *ngFor="let titre of titres">
+                                {{titre.libelle_titre}}
+                            </option>
+                          </select>
+                      </div>
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label> Ville:</label>
+                          <select  name="adrx" id="adrx" style="width: 100%" >  
+                            <option selected></option>
+                            <option value="{{ville.libelle_ville}}" *ngFor="let ville of villes">
+                                {{ville.libelle_ville}}
+                            </option>
+                          </select>
+                      </div>  
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label>Niveau d'étude:</label> 
+                          <select  name="netudex" id="netudex" style="width: 100%">  
+                            <option selected></option>
+                            <option value="{{niveauEtude.libelle__niveau_etude}}" *ngFor="let niveauEtude of niveauEtude">
+                                {{niveauEtude.libelle__niveau_etude}}
+                            </option>
+                          </select>
+                      </div>
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label> Expérience:</label>
+                        <select  name="expx"  id="expx" style="width: 100%;margin-right: 1cm;">      
+                          <option selected></option>
+                          <option value="{{experience.libelle_experience}}" *ngFor="let experience of experiences">
+                              {{experience.libelle_experience}}
+                          </option>
+                        </select>
+                      </div>
+                      <div class="span4" style="margin-bottom: 15px">
+                        <label for="comp">Specialité:</label> 
+                          <select  name="compx" id="compx" style="width: 100%">      
+                            <option selected></option>
+                            <option value="{{specialite.libelle_specialite}}" *ngFor="let specialite of specialites">
+                                {{specialite.libelle_specialite}}
+                            </option>
+                          </select>
+                      </div>
+                      <div class="span4" style="    float: right; margin: 0 20px 0 0;">
+                        <input class="btn btn-primary" type="submit" value="Recherche"  (click)="searchCandidat()"/>
+                      </div>
+                       </fieldset>
+                    </form>
+                   </div>
+                 </div>
+                </ul>
+            </div>
+            </div>
+            </div>
+            </div>
+            <div class="row-fluid">
+            <div class="span12">
+              <div class="widget-box">
+                  <div class="widget-title" title="ajouter un candidat" navPush="CandidatAddPage">
+                    <span class="icon"><i class="icon-plus"></i></span> 
+                    <h5>Liste des Candidats</h5>
+                  </div>
+                <div class="row-fluid" id="recr" style="display: none; text-align: right">
+                  <button class="btn" (click)="addSelection()"  style="background-color: #49CCED;
+                          color: black;
+                          border: none;
+                          margin: 10px 10px 9px 0;"><i class="icon-check"></i>Selectionner des candidats à recruter <i class="icon-chevron-right"></i>
+                  </button>
+                </div>
+                <div style="clear: both"></div>
+                <div class="widget-content" >
+                  <ul class="thumbnails">
+                    <li class="span2"  *ngFor="let candidat of pagedItems">
+                      <div class="checkbox-element">
+                        <input type="checkbox" name="options" id="{{candidat.id}}" value="{{candidat}}" [checked]="cbChecked.indexOf(candidat) >= 0" (change)="afficher(candidat, $event)" />
+                        <label for="{{candidat.id}}"></label>
+                      </div>    
+                      <div class="thumbnail lightbox_trigger">
+                        <img src="http://rs.creativetag.ma/web/assets/{{candidat.photo_candidat}}" alt=""alt="Avatar" style="width:100px;height:100px;border-radius: 50%;"  class="w3-circle" >
+                        <div class="caption" style="text-align: center;">
+                            <h4 style="height: 40px">{{candidat.nom_candidat}} {{candidat.prenom_candidat}}</h4>
+                            <p style="height: 40px; text-align: left;margin: 0;">{{candidat.titre.libelle_titre}}</p>
+                        </div>
+                      </div>
+                    <hr>
+                      <div class="actions">
+                       <a title="" href="" navPush="CandidatDetailsPage"
+                        [navParams]="{candidat: candidat}"><i class="icon-pencil icon-white"></i></a>
+                        <a title= "Supprimer" (click) = "delete(candidat.id)" ><i class="icon-remove icon-white"></i></a>
+                      </div>
+                    </li>
+                  </ul>
+                </div>
+                <div class="pagination alternate">
+                <!-- Pagination -->
+                <!-- pager -->
+                  <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                      <a (click)="setPage(1)">&#x3C;&#x3C;</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === 1}">
+                     <a (click)="setPage(pager.currentPage - 1)">&#x3C;</a>
+                    </li>
+                    <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                      <a (click)="setPage(page)">{{page}}</a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      <a (click)="setPage(pager.currentPage + 1)">></a>
+                    </li>
+                    <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                      <a (click)="setPage(pager.totalPages)">>></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row-fluid">
+      <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+    </div>
+  </ion-content>

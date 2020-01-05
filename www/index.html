@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <script data-ionic="inject">
+    (function(w){var i=w.Ionic=w.Ionic||{};i.version='^3.9.2';i.angular='5.2.10';i.staticDir='build/';})(window);
+  </script>
+  <meta charset="UTF-8">
+  <title>Recrute Sourcing</title>
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+
+
+  <link rel="icon" type="image/x-icon" href="assets/icon/favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#4e8ef7">
+
+  <!-- add to homescreen for ios -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <!-- cordova.js required for cordova apps (remove if not needed) -->
+  <script src="cordova.js"></script>
+
+  <!-- un-comment this code to enable service worker
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('service worker installed'))
+        .catch(err => console.error('Error', err));
+    }
+  </script>
+
+  <link href="build/main.css" rel="stylesheet">
+-->
+
+  <!--template-->
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css" />
+<link rel="stylesheet" href="assets/css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="assets/css/fullcalendar.css" />
+<link rel="stylesheet" href="assets/css/maruti-style.css" />
+<link rel="stylesheet" href="assets/css/maruti-media.css" class="skin-color" />
+
+<link rel="stylesheet" href="assets/css/uniform.css" />
+<link rel="stylesheet" href="assets/css/select2.css" />
+
+<link href="assets/css/font-awesome.css" rel="stylesheet" />
+
+<link href="assets/css/maruti-login.css" rel="stylesheet">
+
+
+<!--old style
+  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="assets/css/style.css" />
+-->
+</head>
+<body>
+
+  <!-- Ionic's root component and where the app will load -->
+  <ion-app>
+
+  </ion-app>
+
+  <!-- The polyfills js is generated during the build process -->
+  <script src="build/polyfills.js"></script>
+
+  <!-- The vendor js is generated during the build process
+       It contains all of the dependencies in node_modules -->
+  <script src="build/vendor.js"></script>
+
+  <!-- The main bundle js is generated during the build process -->
+  <script src="build/main.js"></script>
+
+
+  <!--template
+  <script src="assets/js/excanvas.min.js"></script> 
+-->
+<script src="assets/js/jquery.min.js"></script> 
+<script src="assets/js/jquery.ui.custom.js"></script> 
+<script src="assets/js/bootstrap.min.js"></script> 
+<script src="assets/js/maruti.js"></script> 
+
+<script src="assets/js/jquery.validate.js"></script>
+<script src="assets/js/jquery.wizard.js"></script>
+<script src="assets/js/maruti.js"></script>
+<script src="assets/js/maruti.wizard.js"></script>
+
+
+<script src="assets/js/jquery.uniform.js"></script> 
+<script src="assets/js/select2.min.js"></script> 
+<script src="assets/js/jquery.dataTables.min.js"></script> 
+<script src="assets/js/maruti.tables.js"></script>
+<!--
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.min.js" integrity="sha384-FzT3vTVGXqf7wRfy8k4BiyzvbNfeYjK+frTVqZeNDFl8woCbF0CYG6g2fMEFFo/i" crossorigin="anonymous"></script>
+
+-->
+
+   <!-- Script to Activate the Carousel -->
+   <script>
+      $('.carousel').carousel({
+          interval: 5000 //changes the speed
+      })
+      </script>
+
+<script type="text/javascript">
+  // This function is called from the pop-up menus to transfer to
+  // a different page. Ignore if the value returned is a null string:
+  function goPage (newURL) {
+
+      // if url is empty, skip the menu dividers and reset the menu selection to default
+      if (newURL != "") {
+      
+          // if url is "-", it is this page -- reset the menu:
+          if (newURL == "-" ) {
+              resetMenu();            
+          } 
+          // else, send page to designated URL            
+          else {  
+            document.location.href = newURL;
+          }
+      }
+  }
+
+// resets the menu selection upon entry to this page:
+function resetMenu() {
+   document.gomenu.selector.selectedIndex = 2;
+}
+</script>
+        <script src="assets/js/maruti.login.js"></script> 
+</body>
+</html>

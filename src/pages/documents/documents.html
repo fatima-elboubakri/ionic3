@@ -1,0 +1,100 @@
+<ion-content>
+<!--Header-part-->
+<div id="header">
+  <h1><a href="#" navPush="HomePage"></a></h1>
+</div>
+<!--close-Header-part--> 
+<!--top-Header-messaages-->
+<div class="btn-group rightzero"> <a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> <a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> <a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> <a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> </div>
+<!--close-top-Header-messaages--> 
+<!--top-Header-menu-->
+  <div id="user-nav" class="navbar navbar-inverse">
+    <ul class="nav">
+      <li class="" ><a title="" href="#"><i class="icon icon-user"></i> <span class="text">{{user_info}}</span></a></li> 
+      <li class=""><a title="" href="" (click)="deconnexion()"><i class="icon icon-share-alt"></i>
+        <span class="text">Déconnexion</span></a></li>
+    </ul>
+  </div>
+  <!--close-top-Header-menu-->
+  <div id="sidebar">
+    <a href="#" navPush="HomePage" class="visible-phone"><i class="icon icon-home"></i> Accueil</a>
+    <ul>
+      <li class="active"><a href="#" navPush="HomePage"><i class="icon icon-home"></i><span>Accueil</span></a></li>
+      <li><a href="" navPush="CandidatsPage"><i class="icon icon-user"></i><span>Candidats </span></a></li>
+      <li><a href="" navPush="RecrutePage"><i class="icon icon-briefcase"></i><span>Recrutement</span></a></li>  
+      <li><a href="" navPush="DocumentsPage"><i class="icon icon-file"></i><span>Documents</span></a></li>
+      <li><a href="" navPush="RecherchePage"><i class="icon icon-search"></i><span>Recherche</span></a></li>
+      <li><a href="" navPush="RapportsPage"><i class="icon icon-signal"></i><span>Rapports </span></a></li>
+    </ul>
+  </div>
+  <div id="content">
+    <div id="content-header">
+      <div id="breadcrumb"> <a href="" navPush="DocumentPage" title="page document" class="tip-bottom"><i class="icon-file"></i> Document</a></div>
+    </div>
+    <!-- Page Content -->
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span12">
+          <div class="widget-box">
+            <div class="widget-title" title="ajouter un document" navPush="DocumentAddPage">
+              <span class="icon"><i class="icon-plus"></i></span> 
+                <h5>Liste des Documents</h5>
+            </div>
+            <div class="widget-content nopadding">
+              <div class="controls">
+                <input type="text" class="span11" placeholder="Recherche..."  [(ngModel)]="search"  name="search" (input)="Search()" style="width: 100%; margin: 10px 0 15px;">
+              </div>
+              <table class="table table-bordered table-striped table-doc"> 
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Titre</th>
+                    <th>Déstinataire</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let document of pagedItems">
+                    <td>{{document.date_creation_document}}</td>
+                    <td>{{document.titre_document}}</td>
+                    <td>{{document.id_candidat.nom_candidat}} {{document.id_candidat.prenom_candidat}}</td>
+                    <td class="center">
+                      <a detail-push navPush="DocumentEditPage"
+                        [navParams]="{document: document}"><span class="icon" color="primary"><i class="icon-edit"></i></span></a>
+                       <a (click)="deleteDoc(document.id)"><span class="icon"><i class="icon-trash"></i></span></a>
+                       <a (click)="downloadPdf(document)"><span class="icon"><i class="icon-print"></i></span></a>
+                    </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="pagination alternate">
+                <!-- Pagination -->
+                <!-- pager -->
+                <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+                  <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(1)">&#x3C;&#x3C;</a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === 1}">
+                    <a (click)="setPage(pager.currentPage - 1)">&#x3C;</a>
+                  </li>
+                  <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                    <a (click)="setPage(page)">{{page}}</a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.currentPage + 1)">></a>
+                  </li>
+                  <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                    <a (click)="setPage(pager.totalPages)">>></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>      
+        </div>
+      </div>
+    </div>
+        </div>
+        <div class="row-fluid">
+          <div id="footer" class="span12"> 2018 &copy; RS.  <a>www.RecruteSourcing.fr</a> </div>
+        </div>
+</ion-content>  
